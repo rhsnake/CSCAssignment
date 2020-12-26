@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WeatherServiceForm.aspx.cs" Inherits="CSCAssignment.Task1.WeatherServiceForm" %>
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -26,7 +27,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">From C#</h5>
-            <p class="card-text"><%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WeatherServiceForm.aspx.cs" Inherits="CSCAssignment.Task1.WeatherServiceForm" %></p>
+            <p class="card-text" id="CSharpJSONResponse" runat="server"></p>
           </div>
         </div>
         <div class="card">
