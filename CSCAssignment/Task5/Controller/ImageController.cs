@@ -23,11 +23,11 @@ namespace CSCAssignment.Task5.Controller
         public async Task<HttpResponseMessage> PostFormData()
         {
 
-            string aws_id = "";
-            string aws_key = "";
-            string aws_token = "";
+            string aws_id = "ASIA52Z7VJWQHGQQNROR";
+            string aws_key = "7/ieFvcWxGfufsxya/u9gG42dKuHVUbveBKx834+";
+            string aws_token = "FwoGZXIvYXdzEHYaDGKcV1S7RaeJ3sLI3yLJAaz958N/D81ERhRl3Q7X1xmHKCsPqrM1HImZfoFTGhsow7BW5Hmg5eEtZGvCw8/IlNGj0gndJTS48U25RzO2VBASHws6wTHJNMDr/Mhs2keQxuhawjBPCdw8nJqBFUKY4EB2xemKIe0sTq0/4BJjigUHdQe7a/7HKxamu6BynrbArI4c7iNOlO1cJ+tbjupcTrqJfkrdXEMQlBnqrjLv4g0niyvpPuB8oWfPoKPMC1PSNlvUwytg/018Kw+kh9//qhDvdsRcXA79gCiEwp7/BTItKdAAsnjNJLpe3x8nkzbz8hS4839Cft3i5pzL3e6PNnRnIN3hJT7a9F8518uB";
             SessionAWSCredentials aws_cred = new  SessionAWSCredentials(aws_id, aws_key, aws_token);
-            string bitly_token = "";
+            string bitly_token = "796c69a2ff3e69e196b1ea4a7cb4b5bd29bb3093";
 
             RegionEndpoint bucketRegion = RegionEndpoint.USEast1;
 
