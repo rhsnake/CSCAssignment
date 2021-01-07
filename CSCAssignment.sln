@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCAssignment", "CSCAssignment\CSCAssignment.csproj", "{218622D9-A04F-4D64-9618-B60BC66D75AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCAssignmentTask3", "CSCAssignmentTask3\CSCAssignmentTask3.csproj", "{A0F79B95-CF0B-476C-A440-C542A7F053D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{218622D9-A04F-4D64-9618-B60BC66D75AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{218622D9-A04F-4D64-9618-B60BC66D75AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{218622D9-A04F-4D64-9618-B60BC66D75AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0F79B95-CF0B-476C-A440-C542A7F053D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0F79B95-CF0B-476C-A440-C542A7F053D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0F79B95-CF0B-476C-A440-C542A7F053D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0F79B95-CF0B-476C-A440-C542A7F053D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
