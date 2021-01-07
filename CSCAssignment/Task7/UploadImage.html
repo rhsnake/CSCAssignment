@@ -36,71 +36,80 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Tags of Receipt</h5>
-                <form>
-                    <div class="form-group">
-                        <label for="imageUrl">Enter Url of Image: </label>
-                        <input type="url" id="imageUrl" placeholder="https://example.com" name="imageUrl" required/>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="submitUrl">Submit</button>
-                </form>
-                <p class="card-text" id="tags" ></p>
+                <h5 class="card-title">Preview</h5>
+                <img id="previewPhoto" style="max-height:40em; max-width:40em;display:block;margin:0 auto;" />
             </div>
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Status</h5>
-                <p class="card-text" id="jq-response"></p>
+                <h5 class="card-title">Result</h5>
+                <p class="card-text" id="clarifaianalysis"></p>
             </div>
         </div>
+
     </section>
 </body>
 
 <script src="../Scripts/jquery-3.5.1.min.js"></script>
 <script src="../Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js">
+    const Clarifai = require('clarifai');
+</script>
 <script>
+    var clarifaiApiKey = '1e190629bb0746c0afd7fee89d23854e';
+    var workflowId = 'cscTask7';
 
-    $(() => {
-        const $responseBox = $("#jq-response")
-        const $photoInput = $("#photoFile")
-        const $urlInput = $("imageUrl")
-        $("#submitPhoto").click((event) => {
-            event.preventDefault();
-            let photo = $photoInput[0].files.item(0);
-            if (photo !== null) {
-                var data = new FormData();
-                data.append("upload-photo", photo)
-                console.log(data)
-                for (var pair of data.entries()) {
-                    console.log(pair[0] + ', ' + pair[1]);
-                }
-                $.ajax({
-                    url: "https://localhost:44321/api/t5/upload",
-                    method: "POST",
-                    contentType: false,
-                    data: data,
-                    processData: false,
-                }).done((data) => {
-                    $responseBox.html(`<a href="${data.url}">${data.url}</a>`);
-                }).fail(() => {
-                    $responseBox.text("Failed to upload photo");
-                });
-            }
-            else {
-                $responseBox.text("Please select a photo to upload");
-            }
-        })
+    var app = new Clarifai.App({
+        apiKey: clarifaiApiKey
+    });
 
-        $("submitUrl").click((event) => {
-            event.preventDefault();
+    
+    // Handles image upload
+    $("#submitPhoto").on("click", (event) => {
+        event.preventDefault();
+        //var preview = document.querySelector('img');
+        var preview = $("#previewPhoto");
 
+        var file = $("#photoFile")[0].files[0];
+        var reader = new FileReader();
+        var imageData;
 
-        })
+        reader.addEventListener("load", () => {
+            preview.attr("src", reader.result);
+            imageData = reader.result;
+            imageData = imageData.replace(/^data:image\/(.*);base64,/, '');
+            predictFromWorkflow(imageData);
+        }, false);
 
-
-
-
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     })
+
+    // Analyzes image provided with Clarifai's Workflow API
+    function predictFromWorkflow(photoUrl) {
+        app.workflow.predict(workflowId, { base64: photoUrl }).then(
+            (response) => {
+                var outputs = response.results[0].outputs;
+                var analysis = $("#clarifaianalysis");
+
+                analysis.empty();
+
+                var OCRString = outputs[0].data.text.raw;
+                var oneResultHTML = `
+                         <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">OCR</h5>
+                                <p class="card-text">${OCRString}</p>
+                            </div>
+                        </div>`
+                analysis.append(oneResultHTML);
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
+    }
 
 
 </script>

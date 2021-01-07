@@ -338,6 +338,8 @@
     <Content Include="Task4\SearchTalent\mystyle.css" />
     <Content Include="Task4\SearchTalent\script.js" />
     <Content Include="Task5\uploadImage.html" />
+    <Content Include="Task7\Images\Receipt1.jpg" />
+    <Content Include="Task7\Images\Receipt2.jpg" />
     <Content Include="Task7\UploadImage.html" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -410,8 +412,6 @@
     <Compile Include="Task4\Models\Talent.cs" />
     <Compile Include="Task4\Models\TalentRepository.cs" />
     <Compile Include="Task5\Controller\ImageController.cs" />
-    <Compile Include="Task7\Controller\ImageController.cs" />
-    <Compile Include="Task7\Models\Receipt.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
