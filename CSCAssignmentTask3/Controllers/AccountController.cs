@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using CSCAssignmentTask3.Models;
 using CSCAssignmentTask3.Providers;
 using CSCAssignmentTask3.Results;
+using CSCAssignmentTask3.Services;
 
 namespace CSCAssignmentTask3.Controllers
 {
@@ -326,6 +327,14 @@ namespace CSCAssignmentTask3.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            string captchaToken = model.CaptchaToken;
+            reCaptcha captcha = new reCaptcha();
+            bool isHuman = captcha.Verify(captchaToken);
+            if (!isHuman)
+            {
+                return BadRequest("You are a Robot.");
             }
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
