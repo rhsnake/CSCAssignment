@@ -1,8 +1,6 @@
 ﻿<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Task 1</title>
+<html>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="../Content/bootstrap.min.css" />
@@ -19,17 +17,18 @@
             max-width: 75%;
         }
     </style>
+    <title>Task 7</title>
 </head>
 <body>
     <section id="content">
-        <h2>Task 5 Upload Photo Service</h2>
+        <h2>Task 7 Upload Receipt Service</h2>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Upload Photos</h5>
+                <h5 class="card-title">Upload Photo of Receipt</h5>
                 <form>
                     <div class="form-group">
                         <label for="photoFile">Please choose your photo:</label>
-                        <input type="file" class="form-control-file" id="photoFile" accept="image/png, image/jpeg">
+                        <input type="file" class="form-control-file" id="photoFile" accept="image/png, image/jpeg" required>
                     </div>
                     <button type="submit" class="btn btn-primary" id="submitPhoto">Submit</button>
                 </form>
@@ -37,18 +36,34 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Shortened Link</h5>
+                <h5 class="card-title">Tags of Receipt</h5>
+                <form>
+                    <div class="form-group">
+                        <label for="imageUrl">Enter Url of Image: </label>
+                        <input type="url" id="imageUrl" placeholder="https://example.com" name="imageUrl" required/>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submitUrl">Submit</button>
+                </form>
+                <p class="card-text" id="tags" ></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Status</h5>
                 <p class="card-text" id="jq-response"></p>
             </div>
         </div>
     </section>
 </body>
+
 <script src="../Scripts/jquery-3.5.1.min.js"></script>
 <script src="../Scripts/bootstrap.min.js"></script>
 <script>
+
     $(() => {
         const $responseBox = $("#jq-response")
         const $photoInput = $("#photoFile")
+        const $urlInput = $("imageUrl")
         $("#submitPhoto").click((event) => {
             event.preventDefault();
             let photo = $photoInput[0].files.item(0);
@@ -75,6 +90,16 @@
                 $responseBox.text("Please select a photo to upload");
             }
         })
+
+        $("submitUrl").click((event) => {
+            event.preventDefault();
+
+
+        })
+
+
+
+
     })
 
 

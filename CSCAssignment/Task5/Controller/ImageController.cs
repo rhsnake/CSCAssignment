@@ -74,7 +74,6 @@ namespace CSCAssignment.Task5.Controller
                 url.Host = "api-ssl.bitly.com";
                 url.Path = "v4/shorten";
 
-                //Make a HTTP request to the NEA Weather service
                 JsonDocument wsResponse = BitlyMakeRequest(url.ToString(), bitly_token, itemUrl);
                 JsonElement json = wsResponse.RootElement;
 
