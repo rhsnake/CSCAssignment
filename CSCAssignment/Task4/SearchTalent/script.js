@@ -1,13 +1,14 @@
 $('#search').keyup(function () {
     //get data from json file
-    var urlForJson = "data.json";
-
-
-    //get data from Restful web Service in development environment
-    //var urlForJson = "http://localhost:9000/api/talents";
+    //var urlForJson = "data.json";
 
     //get data from Restful web Service in production environment
     //var urlForJson= "http://csc123.azurewebsites.net/api/talents";
+
+    //get data from Restful web Service in development environment
+    var urlForJson = "https://localhost:44321/api/t4/talents";
+
+
 
     //Url for the Cloud image hosting
     var urlForCloudImage = "http://res.cloudinary.com/doh5kivfn/image/upload/v1460006156/talents/";
